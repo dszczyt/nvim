@@ -230,4 +230,5 @@ highlight PmenuSel ctermbg=1 guifg=#dddd00 guibg=#1f82cd
 highlight PmenuSbar ctermbg=0 guibg=#d6d6d6
 
 let g:nvim_typescript#vue_support=1
+let g:vue_disable_pre_processors=1
 
