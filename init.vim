@@ -17,12 +17,13 @@ set backspace=indent,eol,start
 set autoindent
 set history=1000
 set lazyredraw
+set mouse=a
 if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
   set t_Co=16
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'twerth/ir_black'
+"Plug 'twerth/ir_black'
 Plug 'vim-syntastic/syntastic'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'AndrewRadev/splitjoin.vim'
@@ -59,6 +60,9 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ervandew/supertab'
+Plug 'ahw/vim-hooks'
+Plug 'rakr/vim-one'
+Plug 'tpope/vim-abolish'
 call plug#end()
 
 let g:deoplete#enable_at_startup = 1
@@ -96,8 +100,13 @@ autocmd FileType javascript set softtabstop=2|set tabstop=2|set shiftwidth=2|set
 "au BufNewFile,BufRead *.vue setf vue 
 "autocmd BufNewFile,BufRead *.vue set filetype=html
 
-color ir_dark
+"color ir_dark
 "color ir_black
+let g:one_allow_italics = 0
+let g:airline_theme='one'
+colorscheme one
+set background=dark
+
 
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
