@@ -1,0 +1,1 @@
+../vendor/plug.vim/plug.vim
