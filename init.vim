@@ -63,6 +63,15 @@ Plug 'ervandew/supertab'
 Plug 'ahw/vim-hooks'
 Plug 'rakr/vim-one'
 Plug 'tpope/vim-abolish'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-lua-ftplugin'
+Plug 'artur-shaik/vim-javacomplete2'
+Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
+"Plug 'sebastianmarkow/deoplete-rust'
+Plug 'roxma/nvim-cm-racer'
+Plug 'mikelue/vim-maven-plugin'
+"Plug 'blinks/vim-antlr'
 call plug#end()
 
 let g:deoplete#enable_at_startup = 1
@@ -81,6 +90,8 @@ let g:python3_host_prog  = '/usr/local/bin/python3'
 " Skip the check of neovim module
 let g:python3_host_skip_check = 1
 
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 set autowrite
 map <C-n> :cnext<CR>
@@ -99,6 +110,10 @@ autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.pug
 autocmd FileType javascript set softtabstop=2|set tabstop=2|set shiftwidth=2|set expandtab
 "au BufNewFile,BufRead *.vue setf vue 
 "autocmd BufNewFile,BufRead *.vue set filetype=html
+autocmd FileType yaml set sts=2 ts=2 sw=2 expandtab
+autocmd FileType typescript set sts=2 ts=2 sw=2 expandtab
+
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 "color ir_dark
 "color ir_black
@@ -125,6 +140,7 @@ let g:go_addtags_transform = "camelcase"
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
@@ -244,4 +260,18 @@ highlight PmenuSbar ctermbg=0 guibg=#d6d6d6
 
 let g:nvim_typescript#vue_support=1
 let g:vue_disable_pre_processors=1
+
+let g:netrw_liststyle=3
+let g:netrw_banner = 0
+
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+let g:JavaComplete_MavenRepositoryDisable = 0
+
+let g:rustfmt_autosave = 1
+let g:deoplete#sources#rust#racer_binary='/Users/damien/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='/Users/damien/dev/github.com/rust-lang/rust/src'
+let g:racer_experimental_completer = 1
 
